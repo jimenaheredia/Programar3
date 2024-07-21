@@ -43,7 +43,12 @@ function agregarAlCarrito(disco) {
 }
 
 function calcularPrecioTotal() {
-    return carrito.reduce((total, disco) => total + disco.precio, 0);
+    let total = carrito.reduce((total, disco) => total + disco.precio, 0);
+    console.log("Discos en el carrito:");
+    carrito.forEach((disco, index) => {
+        console.log(`${index + 1}. Artista: ${disco.artista}, Álbum: ${disco.album}, Precio: ${disco.precio}`);
+    });
+    console.log(`Precio total de los discos en el carrito: ${total}`);
 }
 
 function seleccionarDiscos() {
@@ -73,8 +78,7 @@ function seleccionarDiscos() {
         seguirComprando = confirm("¿Deseas agregar más discos al carrito?");
     }
 
-    let precioTotal = calcularPrecioTotal();
-    console.log(`Precio total de los discos en el carrito: ${precioTotal}`);
+    calcularPrecioTotal();
 }
 
 seleccionarDiscos();
